@@ -98,8 +98,9 @@ Returns them as a set of tuples, with list indices replaced by 'list' type"""
 
 def get_structure(jd):
     """Gets structure of the document. This structure is the original json tree with two changes:
-1.) All values are replaced with None
+1.) All values are replaced with their python type (Str, Float, None,...)
 2.) In any list, only unique elements are kept
+
 """
     if type(jd)==dict:
         result={}
@@ -113,7 +114,7 @@ def get_structure(jd):
             if not res_item in result:
                 result.append(res_item)
     else:
-        result=None
+        result=type(jd)
         
     return result
 
